@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Windows.Forms;
+using System.Windows.Forms;  //needed for forms to show
 using System.Diagnostics;  //to run processes like notepad
 using System.Media;  //allows system sounds to play
-using System.IO;
-using System.Speech.Synthesis;
+using System.IO;  //file output
+using System.Speech.Synthesis;  //text to speech
 
 namespace End_of_Day_Income
 {
     public partial class Form1 : Form
     {
-        public static Stopwatch AppTimer= new Stopwatch();
-        public Form1()
+        public static string DSReport;
+        public static Stopwatch AppTimer = new Stopwatch(); public Form1()
         {
             InitializeComponent();
             AppTimer.Start();
@@ -22,91 +22,78 @@ namespace End_of_Day_Income
             //multiply the numeric box value by the dollar amount
             //also stores total $ value for each category
             Program.DollarAmounts[0] = FiftiesNUD.Value * 50;
-            FiftiesTB.Text = "$" + Program.DollarAmounts[0];
             UpdateValues();  //adds values together to get totals
         }
 
         private void TwentiesNUD_ValueChanged(object sender, EventArgs e)
         {
             Program.DollarAmounts[1] = TwentiesNUD.Value * 20;
-            TwentiesTB.Text = "$" + Program.DollarAmounts[1];
             UpdateValues();
         }
 
         private void TensNUD_ValueChanged(object sender, EventArgs e)
         {
             Program.DollarAmounts[2] = TensNUD.Value * 10;
-            TensTB.Text = "$" + Program.DollarAmounts[2];
             UpdateValues();
         }
 
         private void FivesNUD_ValueChanged(object sender, EventArgs e)
         {
             Program.DollarAmounts[3] = FivesNUD.Value * 5;
-            FivesTB.Text = "$" + Program.DollarAmounts[3];
             UpdateValues();
         }
 
         private void OnesNUD_ValueChanged(object sender, EventArgs e)
         {
             Program.DollarAmounts[4] = OnesNUD.Value * 1;
-            OnesTB.Text = "$" + Program.DollarAmounts[4];
             UpdateValues();
         }
 
         private void QuartersNUD_ValueChanged(object sender, EventArgs e)
         {
             Program.DollarAmounts[5] = QuartersNUD.Value * 0.25M;
-            QuartersTB.Text = "$" + Program.DollarAmounts[5];
             UpdateValues();
         }
 
         private void DimesNUD_ValueChanged(object sender, EventArgs e)
         {
             Program.DollarAmounts[6] = DimesNUD.Value * 0.10M;
-            DimesTB.Text = "$" + Program.DollarAmounts[6];
             UpdateValues();
         }
 
         private void NickelsNUD_ValueChanged(object sender, EventArgs e)
         {
             Program.DollarAmounts[7] = NickelsNUD.Value * 0.05M;
-            NickelsTB.Text = "$" + Program.DollarAmounts[7];
             UpdateValues();
         }
 
         private void PenniesNUD_ValueChanged(object sender, EventArgs e)
         {
             Program.DollarAmounts[8] = PenniesNUD.Value * 0.01M;
-            PenniesTB.Text = "$" + Program.DollarAmounts[8];
             UpdateValues();
         }
 
         private void QuarterRollNUD_ValueChanged(object sender, EventArgs e)
         {
             Program.DollarAmounts[9] = QuarterRollNUD.Value * 10;
-            QuarterRollTB.Text = "$" + Program.DollarAmounts[9];
             UpdateValues();
         }
 
         private void DimeRollNUD_ValueChanged(object sender, EventArgs e)
         {
             Program.DollarAmounts[10] = DimeRollNUD.Value * 5;
-            DimeRollTB.Text = "$" + Program.DollarAmounts[10];
             UpdateValues();
         }
 
         private void NickelRollNUD_ValueChanged(object sender, EventArgs e)
         {
             Program.DollarAmounts[11] = NickelRollNUD.Value * 2;
-            NickelRollTB.Text = "$" + Program.DollarAmounts[11];
             UpdateValues();
         }
 
         private void PennyRollNUD_ValueChanged(object sender, EventArgs e)
         {
             Program.DollarAmounts[12] = PennyRollNUD.Value * 0.50M;
-            PennyRollTB.Text = "$" + Program.DollarAmounts[12];
             UpdateValues();
         }
 
@@ -116,7 +103,7 @@ namespace End_of_Day_Income
         }
         #endregion
 
-        private void UpdateValues()
+        private void UpdateValues()  //update dollaramounts array and total it
         {
             //create temporary addition value
             //for bills, it adds value of 50,20,10,5,1
@@ -154,16 +141,19 @@ namespace End_of_Day_Income
             if (GT > ST)  //drawer has extram money
             {
                 Diff = GT - ST;
-                DrawerStateTB.Text = "Drawer is over by $" + Diff.ToString();
+                DrawerStateTB.Text = "Drawer is Over by $" + Diff.ToString();
+                DSReport = "Over by $" + Diff.ToString();
             }
             if (ST > GT)  //drawer short
             {
                 Diff = ST - GT;
                 DrawerStateTB.Text = "Drawer is Short by $" + Diff.ToString();
+                DSReport = "Short by $" + Diff.ToString();
             }
             if (ST == GT)  //drawer matches register total
             {
-                DrawerStateTB.Text = "Drawer is Perfect!";
+                DrawerStateTB.Text = "Perfect!";
+                DSReport = "Perfect!";
             }
         }
 
@@ -174,8 +164,7 @@ namespace End_of_Day_Income
             There is a log file for today, and one for 
             every time the program is used.  */
 
-            string LogPath = Environment.GetEnvironmentVariable("onedriveconsumer") + "\\documents\\brew for you\\End of Day Income\\";
-
+            string LogPath = Environment.GetEnvironmentVariable("onedriveconsumer") + "\\documents\\brew for you\\End of Day Drawer\\";
             Directory.CreateDirectory(LogPath);
 
             //Today log file full path
@@ -185,7 +174,7 @@ namespace End_of_Day_Income
             System.IO.StreamWriter TodayLog = new System.IO.StreamWriter(TodayLogPath);
             DateTime end = DateTime.Now;
 
-            TodayLog.WriteLine("End of Day Income Report");
+            TodayLog.WriteLine("End of Day Drawer Report");
             TodayLog.WriteLine(end);  //print date
             TodayLog.WriteLine();
 
@@ -193,48 +182,48 @@ namespace End_of_Day_Income
             //only controls with positive value get printed to file
 
             if (FiftiesNUD.Value > 0)
-                TodayLog.WriteLine(FiftiesNUD.Value + " " + FiftiesLBL.Text + " = " + FiftiesTB.Text);
+                TodayLog.WriteLine(FiftiesNUD.Value + " " + FiftiesLBL.Text + " = $" + Program.DollarAmounts[0].ToString("n2"));
             if (TwentiesNUD.Value > 0)
-                TodayLog.WriteLine(TwentiesNUD.Value + " " + TwentiesLBL.Text + " = " + TwentiesTB.Text);
+                TodayLog.WriteLine(TwentiesNUD.Value + " " + TwentiesLBL.Text + " = $" + Program.DollarAmounts[1].ToString("n2"));
             if (TensNUD.Value > 0)
-                TodayLog.WriteLine(TensNUD.Value + " " + TensLBL.Text + " = " + TensTB.Text);
+                TodayLog.WriteLine(TensNUD.Value + " " + TensLBL.Text + " = $" + Program.DollarAmounts[2].ToString("n2"));
             if (FivesNUD.Value > 0)
-                TodayLog.WriteLine(FivesNUD.Value + " " + FivesLBL.Text + " = " + FivesTB.Text);
+                TodayLog.WriteLine(FivesNUD.Value + " " + FivesLBL.Text + " = $" + Program.DollarAmounts[3].ToString("n2"));
             if (OnesNUD.Value > 0)
-                TodayLog.WriteLine(OnesNUD.Value + " " + OnesLBL.Text + " = " + OnesTB.Text);
+                TodayLog.WriteLine(OnesNUD.Value + " " + OnesLBL.Text + " = $" + Program.DollarAmounts[4].ToString("n2"));
 
             if (QuartersNUD.Value > 0)
-                TodayLog.WriteLine(QuartersNUD.Value + " " + QuartersLBL.Text + " = " + QuartersTB.Text);
+                TodayLog.WriteLine(QuartersNUD.Value + " " + QuartersLBL.Text + " = $" + Program.DollarAmounts[5].ToString("n2"));
             if (DimesNUD.Value > 0)
-                TodayLog.WriteLine(DimesNUD.Value + " " + DimesLBL.Text + " = " + DimesTB.Text);
+                TodayLog.WriteLine(DimesNUD.Value + " " + DimesLBL.Text + " = $" + Program.DollarAmounts[6].ToString("n2"));
             if (NickelsNUD.Value > 0)
-                TodayLog.WriteLine(NickelsNUD.Value + " " + NickelsLBL.Text + " = " + NickelsTB.Text);
+                TodayLog.WriteLine(NickelsNUD.Value + " " + NickelsLBL.Text + " = $" + Program.DollarAmounts[7].ToString("n2"));
             if (PenniesNUD.Value > 0)
-                TodayLog.WriteLine(PenniesNUD.Value + " " + PenniesLBL.Text + " = " + PenniesTB.Text);
+                TodayLog.WriteLine(PenniesNUD.Value + " " + PenniesLBL.Text + " = $" + Program.DollarAmounts[8].ToString("n2"));
 
             if (QuarterRollNUD.Value > 0)
-                TodayLog.WriteLine(QuarterRollNUD.Value + " " + QuarterRollLBL.Text + " = " + QuarterRollTB.Text);
+                TodayLog.WriteLine(QuarterRollNUD.Value + " " + QuarterRollLBL.Text + " = $" + Program.DollarAmounts[9].ToString("n2"));
             if (DimeRollNUD.Value > 0)
-                TodayLog.WriteLine(DimeRollNUD.Value + " " + DimeRollLBL.Text + " = " + DimeRollTB.Text);
+                TodayLog.WriteLine(DimeRollNUD.Value + " " + DimeRollLBL.Text + " = $" + Program.DollarAmounts[10].ToString("n2"));
             if (NickelRollNUD.Value > 0)
-                TodayLog.WriteLine(NickelRollNUD.Value + " " + NickelRollLBL.Text + " = " + NickelRollTB.Text);
+                TodayLog.WriteLine(NickelRollNUD.Value + " " + NickelRollLBL.Text + " = $" + Program.DollarAmounts[11].ToString("n2"));
             if (PennyRollNUD.Value > 0)
-                TodayLog.WriteLine(PennyRollNUD.Value + " " + PennyRollLBL.Text + " = " + PennyRollTB.Text);
+                TodayLog.WriteLine(PennyRollNUD.Value + " " + PennyRollLBL.Text + " = $" + Program.DollarAmounts[12].ToString("n2"));
             TodayLog.WriteLine();
 
-            TodayLog.WriteLine(" Bills Total:  " + BillsTotalTB.Text);
-            TodayLog.WriteLine(" Coins Total:  " + CoinsTotalTB.Text);
-            TodayLog.WriteLine(" Rolls Total:  " + RollsTotalTB.Text);
-            TodayLog.WriteLine(" Grand Total:  $" + GrandTotalNUD.Value.ToString());
+            TodayLog.WriteLine("   Bills Total:  " + BillsTotalTB.Text);
+            TodayLog.WriteLine("   Coins Total:  " + CoinsTotalTB.Text);
+            TodayLog.WriteLine("   Rolls Total:  " + RollsTotalTB.Text);
+            TodayLog.WriteLine("   Grand Total:  $" + GrandTotalNUD.Value.ToString("n2"));
 
             AppTimer.Stop();
             TimeSpan ts = AppTimer.Elapsed;
             string TimeMessage = String.Format("{0} Hours, {1} Minutes, {2} Seconds",
             ts.Hours, ts.Minutes, ts.Seconds);
-            TodayLog.WriteLine("Count Time:  " + TimeMessage);
-            TodayLog.WriteLine("Square Total:  $" + RegisterNUD.Value.ToString());
-            TodayLog.WriteLine(DrawerStateTB.Text); //seperates records
-            TodayLog.WriteLine("=================");  //in log file
+            TodayLog.WriteLine("    Count Time:  " + TimeMessage);
+            TodayLog.WriteLine("     POS Total:  $" + RegisterNUD.Value.ToString("n2"));
+            TodayLog.WriteLine(" Drawer Status:  " + DSReport); //seperates records
+            TodayLog.WriteLine("==================================================");  //in log file
             TodayLog.WriteLine();
             TodayLog.Close();  //close file, we're done!
 
@@ -247,44 +236,19 @@ namespace End_of_Day_Income
             //assigned to read text files  (notepad, notepad++
             Process.Start(TodayLogPath);
 
-        }
+        } //save report to a file
 
-        #region Button Click events
-        private void SaveBTN_Click(object sender, EventArgs e)
+        #region Menu Items
+        private void activityLogToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //if all categories have 0, don't write a log file
-            if (GrandTotalNUD.Value > 0)
-            {
-                SaveToFile();
-                this.Close();  //closes the form
-            }
-            else
-                SystemSounds.Exclamation.Play(); //play a sound
-        }
-
-        private void ActivityLogBTN_Click(object sender, EventArgs e)
-        {
-            string FullLogPath = Environment.GetEnvironmentVariable("onedriveconsumer") + "\\documents\\brew for you\\End of Day Income\\full.txt";
+            string FullLogPath = Environment.GetEnvironmentVariable("onedriveconsumer") + "\\documents\\brew for you\\End of Day Drawer\\full.txt";
 
             //shows log of all program operations
             if (File.Exists(FullLogPath))
                 Process.Start(@FullLogPath);
         }
 
-        private void HelpBTN_Click(object sender, EventArgs e)
-        {
-            //messagebox describing how the program works.
-            MessageBox.Show("For each money category, type in how many " +
-                "there are.\nWhen done, use the Save button to exit and " +
-                "display\nthe report file for viewing or printing.\n\n" +
-                "The Activity log shows a record for each time the " +
-                "program is run.  Newest records are at the end.",
-                "End of Day Income Help", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-        } //end
-        #endregion
-
-        private void ReadBTN_Click(object sender, EventArgs e)
+        private void speakToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SpeechSynthesizer Chuck = new SpeechSynthesizer();
 
@@ -330,7 +294,7 @@ namespace End_of_Day_Income
 
             if (PenniesNUD.Value > 0)
             {
-                Chuck.SpeakAsync(PenniesNUD.Value + PenniesLBL.Text  + ".");
+                Chuck.SpeakAsync(PenniesNUD.Value + PenniesLBL.Text + ".");
             }
 
             Chuck.SpeakAsync(RegisterLBL.Text + " $" + RegisterNUD.Value + ".");
@@ -345,18 +309,48 @@ namespace End_of_Day_Income
                 Chuck.SpeakAsync(DimeRollNUD.Value + " Dime Rolls.");
             }
 
-            if ( NickelRollNUD.Value > 0 ) 
+            if (NickelRollNUD.Value > 0)
             {
                 Chuck.SpeakAsync(NickelRollNUD.Value + " Nickel rolls.");
             }
 
-            if ( PennyRollNUD.Value > 0 )
+            if (PennyRollNUD.Value > 0)
             {
                 Chuck.SpeakAsync(PennyRollNUD.Value + " Penny RolLS.");
             }
-            
+
             Chuck.SpeakAsync(GrandTotalLBL.Text + " $" + GrandTotalNUD.Value + ".");
             Chuck.SpeakAsync(DrawerStateTB.Text + ".");
-          }
         }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //messagebox describing how the program works.
+            MessageBox.Show("For each money category, type in how many " +
+                "there are.\nWhen done, use the Save button to exit and " +
+                "display\nthe report file for viewing or printing.\n\n" +
+                "The Activity log shows a record for each time the " +
+                "program is run.  Newest records are at the end.",
+                "End of Day Drawer Help", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        } //end
+
+        private void saveViewReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //if all categories have 0, don't write a log file
+            if (GrandTotalNUD.Value > 0)
+            {
+                SaveToFile();
+                this.Close();  //closes the form
+            }
+            else
+                SystemSounds.Exclamation.Play(); //play a sound
+        }
+
+        private void eToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        #endregion
     }
+}
