@@ -67,14 +67,14 @@ namespace End_of_Day_Income
             this.DrawerStateTB = new System.Windows.Forms.TextBox();
             this.GrandTotalNUD = new System.Windows.Forms.NumericUpDown();
             this.FiftiesNUD = new System.Windows.Forms.NumericUpDown();
-            this.ReadBTN = new System.Windows.Forms.Button();
             this.OptionsMenu = new System.Windows.Forms.MenuStrip();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.activityLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.speakToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveViewReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.speakToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startOverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.NickelsNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DimesNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.QuartersNUD)).BeginInit();
@@ -205,7 +205,7 @@ namespace End_of_Day_Income
             0,
             0});
             this.NickelsNUD.Name = "NickelsNUD";
-            this.NickelsNUD.Size = new System.Drawing.Size(120, 38);
+            this.NickelsNUD.Size = new System.Drawing.Size(120, 53);
             this.NickelsNUD.TabIndex = 15;
             this.NickelsNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.NickelsNUD.ValueChanged += new System.EventHandler(this.NickelsNUD_ValueChanged);
@@ -222,7 +222,7 @@ namespace End_of_Day_Income
             0,
             0});
             this.DimesNUD.Name = "DimesNUD";
-            this.DimesNUD.Size = new System.Drawing.Size(120, 38);
+            this.DimesNUD.Size = new System.Drawing.Size(120, 53);
             this.DimesNUD.TabIndex = 13;
             this.DimesNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.DimesNUD.ValueChanged += new System.EventHandler(this.DimesNUD_ValueChanged);
@@ -239,7 +239,7 @@ namespace End_of_Day_Income
             0,
             0});
             this.QuartersNUD.Name = "QuartersNUD";
-            this.QuartersNUD.Size = new System.Drawing.Size(120, 38);
+            this.QuartersNUD.Size = new System.Drawing.Size(120, 53);
             this.QuartersNUD.TabIndex = 11;
             this.QuartersNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.QuartersNUD.ValueChanged += new System.EventHandler(this.QuartersNUD_ValueChanged);
@@ -256,7 +256,7 @@ namespace End_of_Day_Income
             0,
             0});
             this.OnesNUD.Name = "OnesNUD";
-            this.OnesNUD.Size = new System.Drawing.Size(120, 38);
+            this.OnesNUD.Size = new System.Drawing.Size(120, 53);
             this.OnesNUD.TabIndex = 9;
             this.OnesNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.OnesNUD.ValueChanged += new System.EventHandler(this.OnesNUD_ValueChanged);
@@ -273,7 +273,7 @@ namespace End_of_Day_Income
             0,
             0});
             this.FivesNUD.Name = "FivesNUD";
-            this.FivesNUD.Size = new System.Drawing.Size(120, 38);
+            this.FivesNUD.Size = new System.Drawing.Size(120, 53);
             this.FivesNUD.TabIndex = 7;
             this.FivesNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.FivesNUD.ValueChanged += new System.EventHandler(this.FivesNUD_ValueChanged);
@@ -290,7 +290,7 @@ namespace End_of_Day_Income
             0,
             0});
             this.TensNUD.Name = "TensNUD";
-            this.TensNUD.Size = new System.Drawing.Size(120, 38);
+            this.TensNUD.Size = new System.Drawing.Size(120, 53);
             this.TensNUD.TabIndex = 5;
             this.TensNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.TensNUD.ValueChanged += new System.EventHandler(this.TensNUD_ValueChanged);
@@ -307,7 +307,7 @@ namespace End_of_Day_Income
             0,
             0});
             this.TwentiesNUD.Name = "TwentiesNUD";
-            this.TwentiesNUD.Size = new System.Drawing.Size(120, 38);
+            this.TwentiesNUD.Size = new System.Drawing.Size(120, 53);
             this.TwentiesNUD.TabIndex = 3;
             this.TwentiesNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.TwentiesNUD.ValueChanged += new System.EventHandler(this.TwentiesNUD_ValueChanged);
@@ -324,7 +324,7 @@ namespace End_of_Day_Income
             0,
             0});
             this.PenniesNUD.Name = "PenniesNUD";
-            this.PenniesNUD.Size = new System.Drawing.Size(120, 38);
+            this.PenniesNUD.Size = new System.Drawing.Size(120, 53);
             this.PenniesNUD.TabIndex = 17;
             this.PenniesNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.PenniesNUD.ValueChanged += new System.EventHandler(this.PenniesNUD_ValueChanged);
@@ -348,7 +348,7 @@ namespace End_of_Day_Income
             0,
             0});
             this.RegisterNUD.Name = "RegisterNUD";
-            this.RegisterNUD.Size = new System.Drawing.Size(120, 38);
+            this.RegisterNUD.Size = new System.Drawing.Size(120, 53);
             this.RegisterNUD.TabIndex = 19;
             this.RegisterNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.RegisterNUD.Value = new decimal(new int[] {
@@ -370,7 +370,7 @@ namespace End_of_Day_Income
             0,
             0});
             this.DimeRollNUD.Name = "DimeRollNUD";
-            this.DimeRollNUD.Size = new System.Drawing.Size(136, 38);
+            this.DimeRollNUD.Size = new System.Drawing.Size(136, 53);
             this.DimeRollNUD.TabIndex = 23;
             this.DimeRollNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.DimeRollNUD.ValueChanged += new System.EventHandler(this.DimeRollNUD_ValueChanged);
@@ -387,7 +387,7 @@ namespace End_of_Day_Income
             0,
             0});
             this.NickelRollNUD.Name = "NickelRollNUD";
-            this.NickelRollNUD.Size = new System.Drawing.Size(136, 38);
+            this.NickelRollNUD.Size = new System.Drawing.Size(136, 53);
             this.NickelRollNUD.TabIndex = 25;
             this.NickelRollNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.NickelRollNUD.ValueChanged += new System.EventHandler(this.NickelRollNUD_ValueChanged);
@@ -404,7 +404,7 @@ namespace End_of_Day_Income
             0,
             0});
             this.QuarterRollNUD.Name = "QuarterRollNUD";
-            this.QuarterRollNUD.Size = new System.Drawing.Size(136, 38);
+            this.QuarterRollNUD.Size = new System.Drawing.Size(136, 53);
             this.QuarterRollNUD.TabIndex = 21;
             this.QuarterRollNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.QuarterRollNUD.ValueChanged += new System.EventHandler(this.QuarterRollNUD_ValueChanged);
@@ -452,7 +452,7 @@ namespace End_of_Day_Income
             0,
             0});
             this.PennyRollNUD.Name = "PennyRollNUD";
-            this.PennyRollNUD.Size = new System.Drawing.Size(136, 38);
+            this.PennyRollNUD.Size = new System.Drawing.Size(136, 53);
             this.PennyRollNUD.TabIndex = 27;
             this.PennyRollNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.PennyRollNUD.ValueChanged += new System.EventHandler(this.PennyRollNUD_ValueChanged);
@@ -518,7 +518,7 @@ namespace End_of_Day_Income
             this.BillsTotalTB.Location = new System.Drawing.Point(613, 276);
             this.BillsTotalTB.Name = "BillsTotalTB";
             this.BillsTotalTB.ReadOnly = true;
-            this.BillsTotalTB.Size = new System.Drawing.Size(136, 38);
+            this.BillsTotalTB.Size = new System.Drawing.Size(136, 53);
             this.BillsTotalTB.TabIndex = 29;
             this.BillsTotalTB.Text = "$0.00";
             this.BillsTotalTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -530,7 +530,7 @@ namespace End_of_Day_Income
             this.CoinsTotalTB.Location = new System.Drawing.Point(613, 324);
             this.CoinsTotalTB.Name = "CoinsTotalTB";
             this.CoinsTotalTB.ReadOnly = true;
-            this.CoinsTotalTB.Size = new System.Drawing.Size(136, 38);
+            this.CoinsTotalTB.Size = new System.Drawing.Size(136, 53);
             this.CoinsTotalTB.TabIndex = 31;
             this.CoinsTotalTB.Text = "$0.00";
             this.CoinsTotalTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -542,7 +542,7 @@ namespace End_of_Day_Income
             this.RollsTotalTB.Location = new System.Drawing.Point(613, 374);
             this.RollsTotalTB.Name = "RollsTotalTB";
             this.RollsTotalTB.ReadOnly = true;
-            this.RollsTotalTB.Size = new System.Drawing.Size(136, 38);
+            this.RollsTotalTB.Size = new System.Drawing.Size(136, 53);
             this.RollsTotalTB.TabIndex = 33;
             this.RollsTotalTB.Text = "$0.00";
             this.RollsTotalTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -553,7 +553,7 @@ namespace End_of_Day_Income
             this.DrawerStateTB.Location = new System.Drawing.Point(379, 467);
             this.DrawerStateTB.Name = "DrawerStateTB";
             this.DrawerStateTB.ReadOnly = true;
-            this.DrawerStateTB.Size = new System.Drawing.Size(370, 38);
+            this.DrawerStateTB.Size = new System.Drawing.Size(370, 53);
             this.DrawerStateTB.TabIndex = 36;
             this.DrawerStateTB.Text = "Drawer is Perfect!";
             this.DrawerStateTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -573,7 +573,7 @@ namespace End_of_Day_Income
             0});
             this.GrandTotalNUD.Name = "GrandTotalNUD";
             this.GrandTotalNUD.ReadOnly = true;
-            this.GrandTotalNUD.Size = new System.Drawing.Size(136, 38);
+            this.GrandTotalNUD.Size = new System.Drawing.Size(136, 53);
             this.GrandTotalNUD.TabIndex = 35;
             this.GrandTotalNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -590,22 +590,15 @@ namespace End_of_Day_Income
             0,
             0});
             this.FiftiesNUD.Name = "FiftiesNUD";
-            this.FiftiesNUD.Size = new System.Drawing.Size(120, 38);
+            this.FiftiesNUD.Size = new System.Drawing.Size(120, 53);
             this.FiftiesNUD.TabIndex = 1;
             this.FiftiesNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.FiftiesNUD.ValueChanged += new System.EventHandler(this.FiftiesNUD_ValueChanged);
             // 
-            // ReadBTN
-            // 
-            this.ReadBTN.Location = new System.Drawing.Point(770, 412);
-            this.ReadBTN.Name = "ReadBTN";
-            this.ReadBTN.Size = new System.Drawing.Size(150, 100);
-            this.ReadBTN.TabIndex = 53;
-            this.ReadBTN.Text = "Re&ad";
-            this.ReadBTN.UseVisualStyleBackColor = false;
-            // 
             // OptionsMenu
             // 
+            this.OptionsMenu.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.OptionsMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.OptionsMenu.ImeMode = System.Windows.Forms.ImeMode.On;
             this.OptionsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.optionsToolStripMenuItem,
@@ -613,7 +606,7 @@ namespace End_of_Day_Income
             this.OptionsMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.OptionsMenu.Location = new System.Drawing.Point(0, 0);
             this.OptionsMenu.Name = "OptionsMenu";
-            this.OptionsMenu.Size = new System.Drawing.Size(760, 33);
+            this.OptionsMenu.Size = new System.Drawing.Size(760, 45);
             this.OptionsMenu.TabIndex = 55;
             this.OptionsMenu.Text = "&Options";
             // 
@@ -623,63 +616,72 @@ namespace End_of_Day_Income
             this.activityLogToolStripMenuItem,
             this.saveViewReportToolStripMenuItem,
             this.speakToolStripMenuItem,
+            this.startOverToolStripMenuItem,
             this.eToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(88, 29);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(127, 41);
             this.optionsToolStripMenuItem.Text = "&Options";
             // 
             // activityLogToolStripMenuItem
             // 
             this.activityLogToolStripMenuItem.Name = "activityLogToolStripMenuItem";
-            this.activityLogToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+A";
-            this.activityLogToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.activityLogToolStripMenuItem.Size = new System.Drawing.Size(317, 30);
+            this.activityLogToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+L";
+            this.activityLogToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
+            this.activityLogToolStripMenuItem.Size = new System.Drawing.Size(471, 46);
             this.activityLogToolStripMenuItem.Text = "Activity &Log";
             this.activityLogToolStripMenuItem.Click += new System.EventHandler(this.activityLogToolStripMenuItem_Click);
-            // 
-            // speakToolStripMenuItem
-            // 
-            this.speakToolStripMenuItem.Name = "speakToolStripMenuItem";
-            this.speakToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+P";
-            this.speakToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.speakToolStripMenuItem.Size = new System.Drawing.Size(317, 30);
-            this.speakToolStripMenuItem.Text = "S&peak Inputs && Totals";
-            this.speakToolStripMenuItem.Click += new System.EventHandler(this.speakToolStripMenuItem_Click);
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(61, 29);
-            this.helpToolStripMenuItem.Text = "&Help";
-            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // saveViewReportToolStripMenuItem
             // 
             this.saveViewReportToolStripMenuItem.Name = "saveViewReportToolStripMenuItem";
             this.saveViewReportToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+S";
             this.saveViewReportToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveViewReportToolStripMenuItem.Size = new System.Drawing.Size(317, 30);
+            this.saveViewReportToolStripMenuItem.Size = new System.Drawing.Size(471, 46);
             this.saveViewReportToolStripMenuItem.Text = "&Save && View Report";
             this.saveViewReportToolStripMenuItem.Click += new System.EventHandler(this.saveViewReportToolStripMenuItem_Click);
+            // 
+            // speakToolStripMenuItem
+            // 
+            this.speakToolStripMenuItem.Name = "speakToolStripMenuItem";
+            this.speakToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+P";
+            this.speakToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.speakToolStripMenuItem.Size = new System.Drawing.Size(471, 46);
+            this.speakToolStripMenuItem.Text = "S&peak Inputs && Totals";
+            this.speakToolStripMenuItem.Click += new System.EventHandler(this.speakToolStripMenuItem_Click);
             // 
             // eToolStripMenuItem
             // 
             this.eToolStripMenuItem.Name = "eToolStripMenuItem";
             this.eToolStripMenuItem.ShortcutKeyDisplayString = "Alt+F4";
             this.eToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.eToolStripMenuItem.Size = new System.Drawing.Size(317, 30);
+            this.eToolStripMenuItem.Size = new System.Drawing.Size(471, 46);
             this.eToolStripMenuItem.Text = "E&xit";
             this.eToolStripMenuItem.Click += new System.EventHandler(this.eToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(89, 41);
+            this.helpToolStripMenuItem.Text = "&Help";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
+            // 
+            // startOverToolStripMenuItem
+            // 
+            this.startOverToolStripMenuItem.Name = "startOverToolStripMenuItem";
+            this.startOverToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+R";
+            this.startOverToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.startOverToolStripMenuItem.Size = new System.Drawing.Size(471, 46);
+            this.startOverToolStripMenuItem.Text = "Sta&rt Over";
+            this.startOverToolStripMenuItem.Click += new System.EventHandler(this.startOverToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 31F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(25F, 47F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(760, 522);
             this.Controls.Add(this.OptionsMenu);
-            this.Controls.Add(this.ReadBTN);
             this.Controls.Add(this.GrandTotalNUD);
             this.Controls.Add(this.DrawerStateTB);
             this.Controls.Add(this.RollsTotalTB);
@@ -787,7 +789,6 @@ namespace End_of_Day_Income
         private System.Windows.Forms.TextBox DrawerStateTB;
         private System.Windows.Forms.NumericUpDown GrandTotalNUD;
         private System.Windows.Forms.NumericUpDown FiftiesNUD;
-        private System.Windows.Forms.Button ReadBTN;
         private System.Windows.Forms.MenuStrip OptionsMenu;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem activityLogToolStripMenuItem;
@@ -795,6 +796,7 @@ namespace End_of_Day_Income
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveViewReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem startOverToolStripMenuItem;
     }
 }
 

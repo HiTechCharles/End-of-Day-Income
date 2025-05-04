@@ -2,7 +2,7 @@
 using System.Windows.Forms;  //needed for forms to show
 using System.Diagnostics;  //to run processes like notepad
 using System.Media;  //allows system sounds to play
-using System.IO;  //file output
+using System.IO;  // file output
 using System.Speech.Synthesis;  //text to speech
 
 namespace End_of_Day_Income
@@ -141,19 +141,19 @@ namespace End_of_Day_Income
             if (GT > ST)  //drawer has extram money
             {
                 Diff = GT - ST;
-                DrawerStateTB.Text = "Drawer is Over by $" + Diff.ToString();
-                DSReport = "Over by $" + Diff.ToString();
+                DrawerStateTB.Text = "drawer is over by $" + Diff.ToString();
+                DSReport = "over by $" + Diff.ToString();
             }
             if (ST > GT)  //drawer short
             {
                 Diff = ST - GT;
-                DrawerStateTB.Text = "Drawer is Short by $" + Diff.ToString();
-                DSReport = "Short by $" + Diff.ToString();
+                DrawerStateTB.Text ="drawer is Short by $" + Diff.ToString();
+                DSReport = "short by $" + Diff.ToString();
             }
             if (ST == GT)  //drawer matches register total
             {
-                DrawerStateTB.Text = "Perfect!";
-                DSReport = "Perfect!";
+                DrawerStateTB.Text = "drawer is perfect!";
+                DSReport = "perfect!";
             }
         }
 
@@ -350,6 +350,19 @@ namespace End_of_Day_Income
         private void eToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void startOverToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control is NumericUpDown numericUpDown)
+                {
+                    numericUpDown.Value = 0;
+                }
+            }
+            RegisterNUD.Value = 100;
+            FiftiesNUD.Focus();
         }
         #endregion
     }
