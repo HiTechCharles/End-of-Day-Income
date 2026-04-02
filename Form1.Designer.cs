@@ -1,4 +1,8 @@
-﻿
+﻿using System;
+using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
+
 namespace End_of_Day_Income
 {
     partial class Form1
@@ -14,9 +18,14 @@ namespace End_of_Day_Income
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing)
             {
-                components.Dispose();
+                if (components != null)
+                {
+                    components.Dispose();
+                }
+                // Dispose custom resources
+                Form1.DrawerTalk?.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -69,12 +78,14 @@ namespace End_of_Day_Income
             this.FiftiesNUD = new System.Windows.Forms.NumericUpDown();
             this.OptionsMenu = new System.Windows.Forms.MenuStrip();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.activityLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFilderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ReadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveViewReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.speakToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.startOverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.NickelsNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DimesNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.QuartersNUD)).BeginInit();
@@ -95,100 +106,100 @@ namespace End_of_Day_Income
             // 
             // FiftiesLBL
             // 
-            this.FiftiesLBL.Location = new System.Drawing.Point(67, 44);
+            this.FiftiesLBL.Location = new System.Drawing.Point(60, 47);
             this.FiftiesLBL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.FiftiesLBL.Name = "FiftiesLBL";
-            this.FiftiesLBL.Size = new System.Drawing.Size(136, 38);
+            this.FiftiesLBL.Size = new System.Drawing.Size(123, 35);
             this.FiftiesLBL.TabIndex = 0;
             this.FiftiesLBL.Text = "Fifties";
             this.FiftiesLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // OnesLBL
             // 
-            this.OnesLBL.Location = new System.Drawing.Point(67, 232);
+            this.OnesLBL.Location = new System.Drawing.Point(60, 224);
             this.OnesLBL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.OnesLBL.Name = "OnesLBL";
-            this.OnesLBL.Size = new System.Drawing.Size(136, 38);
+            this.OnesLBL.Size = new System.Drawing.Size(123, 35);
             this.OnesLBL.TabIndex = 8;
             this.OnesLBL.Text = "Ones";
             this.OnesLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // FivesLBL
             // 
-            this.FivesLBL.Location = new System.Drawing.Point(67, 185);
+            this.FivesLBL.Location = new System.Drawing.Point(60, 180);
             this.FivesLBL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.FivesLBL.Name = "FivesLBL";
-            this.FivesLBL.Size = new System.Drawing.Size(136, 38);
+            this.FivesLBL.Size = new System.Drawing.Size(123, 35);
             this.FivesLBL.TabIndex = 6;
             this.FivesLBL.Text = "Fives";
             this.FivesLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // TensLBL
             // 
-            this.TensLBL.Location = new System.Drawing.Point(67, 138);
+            this.TensLBL.Location = new System.Drawing.Point(60, 136);
             this.TensLBL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.TensLBL.Name = "TensLBL";
-            this.TensLBL.Size = new System.Drawing.Size(136, 38);
+            this.TensLBL.Size = new System.Drawing.Size(123, 35);
             this.TensLBL.TabIndex = 4;
             this.TensLBL.Text = "Tens";
             this.TensLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // TwentiesLBL
             // 
-            this.TwentiesLBL.Location = new System.Drawing.Point(67, 91);
+            this.TwentiesLBL.Location = new System.Drawing.Point(60, 91);
             this.TwentiesLBL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.TwentiesLBL.Name = "TwentiesLBL";
-            this.TwentiesLBL.Size = new System.Drawing.Size(136, 38);
+            this.TwentiesLBL.Size = new System.Drawing.Size(123, 35);
             this.TwentiesLBL.TabIndex = 2;
             this.TwentiesLBL.Text = "Twenties";
             this.TwentiesLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // PenniesLBL
             // 
-            this.PenniesLBL.Location = new System.Drawing.Point(67, 420);
+            this.PenniesLBL.Location = new System.Drawing.Point(60, 402);
             this.PenniesLBL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PenniesLBL.Name = "PenniesLBL";
-            this.PenniesLBL.Size = new System.Drawing.Size(136, 38);
+            this.PenniesLBL.Size = new System.Drawing.Size(123, 35);
             this.PenniesLBL.TabIndex = 16;
             this.PenniesLBL.Text = "Pennies";
             this.PenniesLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // NickelsLBL
             // 
-            this.NickelsLBL.Location = new System.Drawing.Point(67, 373);
+            this.NickelsLBL.Location = new System.Drawing.Point(60, 357);
             this.NickelsLBL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.NickelsLBL.Name = "NickelsLBL";
-            this.NickelsLBL.Size = new System.Drawing.Size(136, 38);
+            this.NickelsLBL.Size = new System.Drawing.Size(123, 35);
             this.NickelsLBL.TabIndex = 14;
             this.NickelsLBL.Text = "Nickels";
             this.NickelsLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // DimesLBL
             // 
-            this.DimesLBL.Location = new System.Drawing.Point(67, 326);
+            this.DimesLBL.Location = new System.Drawing.Point(60, 313);
             this.DimesLBL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.DimesLBL.Name = "DimesLBL";
-            this.DimesLBL.Size = new System.Drawing.Size(136, 38);
+            this.DimesLBL.Size = new System.Drawing.Size(123, 35);
             this.DimesLBL.TabIndex = 12;
             this.DimesLBL.Text = "Dimes";
             this.DimesLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // QuartersLBL
             // 
-            this.QuartersLBL.Location = new System.Drawing.Point(67, 279);
+            this.QuartersLBL.Location = new System.Drawing.Point(60, 269);
             this.QuartersLBL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.QuartersLBL.Name = "QuartersLBL";
-            this.QuartersLBL.Size = new System.Drawing.Size(136, 38);
+            this.QuartersLBL.Size = new System.Drawing.Size(123, 35);
             this.QuartersLBL.TabIndex = 10;
             this.QuartersLBL.Text = "Quarters";
             this.QuartersLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // RegisterLBL
             // 
-            this.RegisterLBL.Location = new System.Drawing.Point(53, 467);
+            this.RegisterLBL.Location = new System.Drawing.Point(60, 445);
             this.RegisterLBL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.RegisterLBL.Name = "RegisterLBL";
-            this.RegisterLBL.Size = new System.Drawing.Size(150, 38);
+            this.RegisterLBL.Size = new System.Drawing.Size(123, 35);
             this.RegisterLBL.TabIndex = 18;
             this.RegisterLBL.Text = "POS &Total";
             this.RegisterLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -198,136 +209,136 @@ namespace End_of_Day_Income
             this.NickelsNUD.AccessibleDescription = "Number of Nickels";
             this.NickelsNUD.AccessibleName = "Nickels";
             this.NickelsNUD.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.NickelsNUD.Location = new System.Drawing.Point(210, 372);
+            this.NickelsNUD.Location = new System.Drawing.Point(189, 357);
             this.NickelsNUD.Maximum = new decimal(new int[] {
             99,
             0,
             0,
             0});
             this.NickelsNUD.Name = "NickelsNUD";
-            this.NickelsNUD.Size = new System.Drawing.Size(120, 53);
+            this.NickelsNUD.Size = new System.Drawing.Size(109, 36);
             this.NickelsNUD.TabIndex = 15;
             this.NickelsNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.NickelsNUD.ValueChanged += new System.EventHandler(this.NickelsNUD_ValueChanged);
+            this.NickelsNUD.ValueChanged += new System.EventHandler(this.CommonNudChanged);
             // 
             // DimesNUD
             // 
             this.DimesNUD.AccessibleDescription = "Number of Dimes";
             this.DimesNUD.AccessibleName = "Dimes";
             this.DimesNUD.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.DimesNUD.Location = new System.Drawing.Point(210, 324);
+            this.DimesNUD.Location = new System.Drawing.Point(189, 313);
             this.DimesNUD.Maximum = new decimal(new int[] {
             99,
             0,
             0,
             0});
             this.DimesNUD.Name = "DimesNUD";
-            this.DimesNUD.Size = new System.Drawing.Size(120, 53);
+            this.DimesNUD.Size = new System.Drawing.Size(109, 36);
             this.DimesNUD.TabIndex = 13;
             this.DimesNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.DimesNUD.ValueChanged += new System.EventHandler(this.DimesNUD_ValueChanged);
+            this.DimesNUD.ValueChanged += new System.EventHandler(this.CommonNudChanged);
             // 
             // QuartersNUD
             // 
             this.QuartersNUD.AccessibleDescription = "Number of Quarters";
             this.QuartersNUD.AccessibleName = "Quarters";
             this.QuartersNUD.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.QuartersNUD.Location = new System.Drawing.Point(210, 276);
+            this.QuartersNUD.Location = new System.Drawing.Point(189, 269);
             this.QuartersNUD.Maximum = new decimal(new int[] {
             99,
             0,
             0,
             0});
             this.QuartersNUD.Name = "QuartersNUD";
-            this.QuartersNUD.Size = new System.Drawing.Size(120, 53);
+            this.QuartersNUD.Size = new System.Drawing.Size(109, 36);
             this.QuartersNUD.TabIndex = 11;
             this.QuartersNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.QuartersNUD.ValueChanged += new System.EventHandler(this.QuartersNUD_ValueChanged);
+            this.QuartersNUD.ValueChanged += new System.EventHandler(this.CommonNudChanged);
             // 
             // OnesNUD
             // 
             this.OnesNUD.AccessibleDescription = "Number of Ones";
             this.OnesNUD.AccessibleName = "Ones";
             this.OnesNUD.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.OnesNUD.Location = new System.Drawing.Point(210, 228);
+            this.OnesNUD.Location = new System.Drawing.Point(189, 224);
             this.OnesNUD.Maximum = new decimal(new int[] {
             99,
             0,
             0,
             0});
             this.OnesNUD.Name = "OnesNUD";
-            this.OnesNUD.Size = new System.Drawing.Size(120, 53);
+            this.OnesNUD.Size = new System.Drawing.Size(109, 36);
             this.OnesNUD.TabIndex = 9;
             this.OnesNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.OnesNUD.ValueChanged += new System.EventHandler(this.OnesNUD_ValueChanged);
+            this.OnesNUD.ValueChanged += new System.EventHandler(this.CommonNudChanged);
             // 
             // FivesNUD
             // 
             this.FivesNUD.AccessibleDescription = "Number of Fives";
             this.FivesNUD.AccessibleName = "Fives";
             this.FivesNUD.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.FivesNUD.Location = new System.Drawing.Point(210, 180);
+            this.FivesNUD.Location = new System.Drawing.Point(189, 180);
             this.FivesNUD.Maximum = new decimal(new int[] {
             99,
             0,
             0,
             0});
             this.FivesNUD.Name = "FivesNUD";
-            this.FivesNUD.Size = new System.Drawing.Size(120, 53);
+            this.FivesNUD.Size = new System.Drawing.Size(109, 36);
             this.FivesNUD.TabIndex = 7;
             this.FivesNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.FivesNUD.ValueChanged += new System.EventHandler(this.FivesNUD_ValueChanged);
+            this.FivesNUD.ValueChanged += new System.EventHandler(this.CommonNudChanged);
             // 
             // TensNUD
             // 
             this.TensNUD.AccessibleDescription = "Number of Tens";
             this.TensNUD.AccessibleName = "Tens";
             this.TensNUD.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.TensNUD.Location = new System.Drawing.Point(210, 132);
+            this.TensNUD.Location = new System.Drawing.Point(189, 136);
             this.TensNUD.Maximum = new decimal(new int[] {
             99,
             0,
             0,
             0});
             this.TensNUD.Name = "TensNUD";
-            this.TensNUD.Size = new System.Drawing.Size(120, 53);
+            this.TensNUD.Size = new System.Drawing.Size(109, 36);
             this.TensNUD.TabIndex = 5;
             this.TensNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TensNUD.ValueChanged += new System.EventHandler(this.TensNUD_ValueChanged);
+            this.TensNUD.ValueChanged += new System.EventHandler(this.CommonNudChanged);
             // 
             // TwentiesNUD
             // 
             this.TwentiesNUD.AccessibleDescription = "Number of Twenties";
             this.TwentiesNUD.AccessibleName = "Twenties";
             this.TwentiesNUD.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.TwentiesNUD.Location = new System.Drawing.Point(210, 84);
+            this.TwentiesNUD.Location = new System.Drawing.Point(189, 91);
             this.TwentiesNUD.Maximum = new decimal(new int[] {
             99,
             0,
             0,
             0});
             this.TwentiesNUD.Name = "TwentiesNUD";
-            this.TwentiesNUD.Size = new System.Drawing.Size(120, 53);
+            this.TwentiesNUD.Size = new System.Drawing.Size(109, 36);
             this.TwentiesNUD.TabIndex = 3;
             this.TwentiesNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TwentiesNUD.ValueChanged += new System.EventHandler(this.TwentiesNUD_ValueChanged);
+            this.TwentiesNUD.ValueChanged += new System.EventHandler(this.CommonNudChanged);
             // 
             // PenniesNUD
             // 
             this.PenniesNUD.AccessibleDescription = "Number of Pennies";
             this.PenniesNUD.AccessibleName = "Pennies";
             this.PenniesNUD.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.PenniesNUD.Location = new System.Drawing.Point(210, 420);
+            this.PenniesNUD.Location = new System.Drawing.Point(189, 402);
             this.PenniesNUD.Maximum = new decimal(new int[] {
             99,
             0,
             0,
             0});
             this.PenniesNUD.Name = "PenniesNUD";
-            this.PenniesNUD.Size = new System.Drawing.Size(120, 53);
+            this.PenniesNUD.Size = new System.Drawing.Size(109, 36);
             this.PenniesNUD.TabIndex = 17;
             this.PenniesNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.PenniesNUD.ValueChanged += new System.EventHandler(this.PenniesNUD_ValueChanged);
+            this.PenniesNUD.ValueChanged += new System.EventHandler(this.CommonNudChanged);
             // 
             // RegisterNUD
             // 
@@ -341,14 +352,14 @@ namespace End_of_Day_Income
             0,
             0,
             131072});
-            this.RegisterNUD.Location = new System.Drawing.Point(210, 467);
+            this.RegisterNUD.Location = new System.Drawing.Point(189, 445);
             this.RegisterNUD.Maximum = new decimal(new int[] {
             99999,
             0,
             0,
             0});
             this.RegisterNUD.Name = "RegisterNUD";
-            this.RegisterNUD.Size = new System.Drawing.Size(120, 53);
+            this.RegisterNUD.Size = new System.Drawing.Size(109, 36);
             this.RegisterNUD.TabIndex = 19;
             this.RegisterNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.RegisterNUD.Value = new decimal(new int[] {
@@ -363,68 +374,68 @@ namespace End_of_Day_Income
             this.DimeRollNUD.AccessibleDescription = "Number of Dime Rolls";
             this.DimeRollNUD.AccessibleName = "five dollars dimes";
             this.DimeRollNUD.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.DimeRollNUD.Location = new System.Drawing.Point(613, 83);
+            this.DimeRollNUD.Location = new System.Drawing.Point(554, 90);
             this.DimeRollNUD.Maximum = new decimal(new int[] {
             99,
             0,
             0,
             0});
             this.DimeRollNUD.Name = "DimeRollNUD";
-            this.DimeRollNUD.Size = new System.Drawing.Size(136, 53);
+            this.DimeRollNUD.Size = new System.Drawing.Size(123, 36);
             this.DimeRollNUD.TabIndex = 23;
             this.DimeRollNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.DimeRollNUD.ValueChanged += new System.EventHandler(this.DimeRollNUD_ValueChanged);
+            this.DimeRollNUD.ValueChanged += new System.EventHandler(this.CommonNudChanged);
             // 
             // NickelRollNUD
             // 
             this.NickelRollNUD.AccessibleDescription = "Number of Nickel Rolls";
             this.NickelRollNUD.AccessibleName = "Two dollars nickels";
             this.NickelRollNUD.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.NickelRollNUD.Location = new System.Drawing.Point(613, 131);
+            this.NickelRollNUD.Location = new System.Drawing.Point(554, 135);
             this.NickelRollNUD.Maximum = new decimal(new int[] {
             99,
             0,
             0,
             0});
             this.NickelRollNUD.Name = "NickelRollNUD";
-            this.NickelRollNUD.Size = new System.Drawing.Size(136, 53);
+            this.NickelRollNUD.Size = new System.Drawing.Size(123, 36);
             this.NickelRollNUD.TabIndex = 25;
             this.NickelRollNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.NickelRollNUD.ValueChanged += new System.EventHandler(this.NickelRollNUD_ValueChanged);
+            this.NickelRollNUD.ValueChanged += new System.EventHandler(this.CommonNudChanged);
             // 
             // QuarterRollNUD
             // 
             this.QuarterRollNUD.AccessibleDescription = "Number of Quarter Rolls";
             this.QuarterRollNUD.AccessibleName = "Ten dollars quarters";
             this.QuarterRollNUD.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.QuarterRollNUD.Location = new System.Drawing.Point(613, 38);
+            this.QuarterRollNUD.Location = new System.Drawing.Point(554, 49);
             this.QuarterRollNUD.Maximum = new decimal(new int[] {
             99,
             0,
             0,
             0});
             this.QuarterRollNUD.Name = "QuarterRollNUD";
-            this.QuarterRollNUD.Size = new System.Drawing.Size(136, 53);
+            this.QuarterRollNUD.Size = new System.Drawing.Size(123, 36);
             this.QuarterRollNUD.TabIndex = 21;
             this.QuarterRollNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.QuarterRollNUD.ValueChanged += new System.EventHandler(this.QuarterRollNUD_ValueChanged);
+            this.QuarterRollNUD.ValueChanged += new System.EventHandler(this.CommonNudChanged);
             // 
             // DimeRollLBL
             // 
-            this.DimeRollLBL.Location = new System.Drawing.Point(373, 84);
+            this.DimeRollLBL.Location = new System.Drawing.Point(337, 90);
             this.DimeRollLBL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.DimeRollLBL.Name = "DimeRollLBL";
-            this.DimeRollLBL.Size = new System.Drawing.Size(233, 38);
+            this.DimeRollLBL.Size = new System.Drawing.Size(211, 35);
             this.DimeRollLBL.TabIndex = 22;
             this.DimeRollLBL.Text = "$5.00 Dimes";
             this.DimeRollLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // NickelRollLBL
             // 
-            this.NickelRollLBL.Location = new System.Drawing.Point(373, 131);
+            this.NickelRollLBL.Location = new System.Drawing.Point(337, 135);
             this.NickelRollLBL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.NickelRollLBL.Name = "NickelRollLBL";
-            this.NickelRollLBL.Size = new System.Drawing.Size(233, 38);
+            this.NickelRollLBL.Size = new System.Drawing.Size(211, 35);
             this.NickelRollLBL.TabIndex = 24;
             this.NickelRollLBL.Text = "$2.00 Nickels";
             this.NickelRollLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -432,10 +443,10 @@ namespace End_of_Day_Income
             // QuarterRollLBL
             // 
             this.QuarterRollLBL.AccessibleName = "";
-            this.QuarterRollLBL.Location = new System.Drawing.Point(373, 37);
+            this.QuarterRollLBL.Location = new System.Drawing.Point(337, 49);
             this.QuarterRollLBL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.QuarterRollLBL.Name = "QuarterRollLBL";
-            this.QuarterRollLBL.Size = new System.Drawing.Size(233, 38);
+            this.QuarterRollLBL.Size = new System.Drawing.Size(211, 35);
             this.QuarterRollLBL.TabIndex = 20;
             this.QuarterRollLBL.Text = "$10.00 Quarters";
             this.QuarterRollLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -445,24 +456,24 @@ namespace End_of_Day_Income
             this.PennyRollNUD.AccessibleDescription = "Number of Penny Rolls";
             this.PennyRollNUD.AccessibleName = "50 cents pennies";
             this.PennyRollNUD.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.PennyRollNUD.Location = new System.Drawing.Point(613, 179);
+            this.PennyRollNUD.Location = new System.Drawing.Point(554, 179);
             this.PennyRollNUD.Maximum = new decimal(new int[] {
             99,
             0,
             0,
             0});
             this.PennyRollNUD.Name = "PennyRollNUD";
-            this.PennyRollNUD.Size = new System.Drawing.Size(136, 53);
+            this.PennyRollNUD.Size = new System.Drawing.Size(123, 36);
             this.PennyRollNUD.TabIndex = 27;
             this.PennyRollNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.PennyRollNUD.ValueChanged += new System.EventHandler(this.PennyRollNUD_ValueChanged);
+            this.PennyRollNUD.ValueChanged += new System.EventHandler(this.CommonNudChanged);
             // 
             // PennyRollLBL
             // 
-            this.PennyRollLBL.Location = new System.Drawing.Point(373, 180);
+            this.PennyRollLBL.Location = new System.Drawing.Point(337, 179);
             this.PennyRollLBL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PennyRollLBL.Name = "PennyRollLBL";
-            this.PennyRollLBL.Size = new System.Drawing.Size(233, 38);
+            this.PennyRollLBL.Size = new System.Drawing.Size(211, 35);
             this.PennyRollLBL.TabIndex = 26;
             this.PennyRollLBL.Text = "$0.50 Pennies";
             this.PennyRollLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -470,10 +481,10 @@ namespace End_of_Day_Income
             // BillTotalLBL
             // 
             this.BillTotalLBL.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
-            this.BillTotalLBL.Location = new System.Drawing.Point(373, 279);
+            this.BillTotalLBL.Location = new System.Drawing.Point(337, 269);
             this.BillTotalLBL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.BillTotalLBL.Name = "BillTotalLBL";
-            this.BillTotalLBL.Size = new System.Drawing.Size(233, 38);
+            this.BillTotalLBL.Size = new System.Drawing.Size(211, 35);
             this.BillTotalLBL.TabIndex = 28;
             this.BillTotalLBL.Text = "&Bills Total";
             this.BillTotalLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -481,10 +492,10 @@ namespace End_of_Day_Income
             // RollsTotalLBL
             // 
             this.RollsTotalLBL.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
-            this.RollsTotalLBL.Location = new System.Drawing.Point(373, 373);
+            this.RollsTotalLBL.Location = new System.Drawing.Point(337, 359);
             this.RollsTotalLBL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.RollsTotalLBL.Name = "RollsTotalLBL";
-            this.RollsTotalLBL.Size = new System.Drawing.Size(233, 38);
+            this.RollsTotalLBL.Size = new System.Drawing.Size(211, 35);
             this.RollsTotalLBL.TabIndex = 32;
             this.RollsTotalLBL.Text = "&Rolls Total";
             this.RollsTotalLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -492,10 +503,10 @@ namespace End_of_Day_Income
             // CoinTotalLBL
             // 
             this.CoinTotalLBL.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
-            this.CoinTotalLBL.Location = new System.Drawing.Point(373, 326);
+            this.CoinTotalLBL.Location = new System.Drawing.Point(337, 313);
             this.CoinTotalLBL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CoinTotalLBL.Name = "CoinTotalLBL";
-            this.CoinTotalLBL.Size = new System.Drawing.Size(233, 38);
+            this.CoinTotalLBL.Size = new System.Drawing.Size(211, 35);
             this.CoinTotalLBL.TabIndex = 30;
             this.CoinTotalLBL.Text = "&Coins Total";
             this.CoinTotalLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -503,10 +514,10 @@ namespace End_of_Day_Income
             // GrandTotalLBL
             // 
             this.GrandTotalLBL.AccessibleRole = System.Windows.Forms.AccessibleRole.Link;
-            this.GrandTotalLBL.Location = new System.Drawing.Point(373, 422);
+            this.GrandTotalLBL.Location = new System.Drawing.Point(337, 405);
             this.GrandTotalLBL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.GrandTotalLBL.Name = "GrandTotalLBL";
-            this.GrandTotalLBL.Size = new System.Drawing.Size(233, 38);
+            this.GrandTotalLBL.Size = new System.Drawing.Size(211, 35);
             this.GrandTotalLBL.TabIndex = 34;
             this.GrandTotalLBL.Text = "&Grand Total";
             this.GrandTotalLBL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -515,10 +526,10 @@ namespace End_of_Day_Income
             // 
             this.BillsTotalTB.AcceptsReturn = true;
             this.BillsTotalTB.AccessibleDescription = "Bills Total";
-            this.BillsTotalTB.Location = new System.Drawing.Point(613, 276);
+            this.BillsTotalTB.Location = new System.Drawing.Point(554, 269);
             this.BillsTotalTB.Name = "BillsTotalTB";
             this.BillsTotalTB.ReadOnly = true;
-            this.BillsTotalTB.Size = new System.Drawing.Size(136, 53);
+            this.BillsTotalTB.Size = new System.Drawing.Size(123, 36);
             this.BillsTotalTB.TabIndex = 29;
             this.BillsTotalTB.Text = "$0.00";
             this.BillsTotalTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -527,10 +538,10 @@ namespace End_of_Day_Income
             // 
             this.CoinsTotalTB.AcceptsReturn = true;
             this.CoinsTotalTB.AccessibleDescription = "Coins Total";
-            this.CoinsTotalTB.Location = new System.Drawing.Point(613, 324);
+            this.CoinsTotalTB.Location = new System.Drawing.Point(554, 313);
             this.CoinsTotalTB.Name = "CoinsTotalTB";
             this.CoinsTotalTB.ReadOnly = true;
-            this.CoinsTotalTB.Size = new System.Drawing.Size(136, 53);
+            this.CoinsTotalTB.Size = new System.Drawing.Size(123, 36);
             this.CoinsTotalTB.TabIndex = 31;
             this.CoinsTotalTB.Text = "$0.00";
             this.CoinsTotalTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -539,10 +550,10 @@ namespace End_of_Day_Income
             // 
             this.RollsTotalTB.AcceptsReturn = true;
             this.RollsTotalTB.AccessibleDescription = "Rolls Total";
-            this.RollsTotalTB.Location = new System.Drawing.Point(613, 374);
+            this.RollsTotalTB.Location = new System.Drawing.Point(554, 359);
             this.RollsTotalTB.Name = "RollsTotalTB";
             this.RollsTotalTB.ReadOnly = true;
-            this.RollsTotalTB.Size = new System.Drawing.Size(136, 53);
+            this.RollsTotalTB.Size = new System.Drawing.Size(123, 36);
             this.RollsTotalTB.TabIndex = 33;
             this.RollsTotalTB.Text = "$0.00";
             this.RollsTotalTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -550,10 +561,10 @@ namespace End_of_Day_Income
             // DrawerStateTB
             // 
             this.DrawerStateTB.AcceptsReturn = true;
-            this.DrawerStateTB.Location = new System.Drawing.Point(379, 467);
+            this.DrawerStateTB.Location = new System.Drawing.Point(342, 445);
             this.DrawerStateTB.Name = "DrawerStateTB";
             this.DrawerStateTB.ReadOnly = true;
-            this.DrawerStateTB.Size = new System.Drawing.Size(370, 53);
+            this.DrawerStateTB.Size = new System.Drawing.Size(335, 36);
             this.DrawerStateTB.TabIndex = 36;
             this.DrawerStateTB.Text = "Drawer is Perfect!";
             this.DrawerStateTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -565,7 +576,7 @@ namespace End_of_Day_Income
             this.GrandTotalNUD.DecimalPlaces = 2;
             this.GrandTotalNUD.ImeMode = System.Windows.Forms.ImeMode.On;
             this.GrandTotalNUD.InterceptArrowKeys = false;
-            this.GrandTotalNUD.Location = new System.Drawing.Point(613, 424);
+            this.GrandTotalNUD.Location = new System.Drawing.Point(554, 405);
             this.GrandTotalNUD.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -573,7 +584,7 @@ namespace End_of_Day_Income
             0});
             this.GrandTotalNUD.Name = "GrandTotalNUD";
             this.GrandTotalNUD.ReadOnly = true;
-            this.GrandTotalNUD.Size = new System.Drawing.Size(136, 53);
+            this.GrandTotalNUD.Size = new System.Drawing.Size(123, 36);
             this.GrandTotalNUD.TabIndex = 35;
             this.GrandTotalNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -583,21 +594,21 @@ namespace End_of_Day_Income
             this.FiftiesNUD.AccessibleName = "Fifties";
             this.FiftiesNUD.AllowDrop = true;
             this.FiftiesNUD.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.FiftiesNUD.Location = new System.Drawing.Point(210, 36);
+            this.FiftiesNUD.Location = new System.Drawing.Point(189, 47);
             this.FiftiesNUD.Maximum = new decimal(new int[] {
             99,
             0,
             0,
             0});
             this.FiftiesNUD.Name = "FiftiesNUD";
-            this.FiftiesNUD.Size = new System.Drawing.Size(120, 53);
+            this.FiftiesNUD.Size = new System.Drawing.Size(109, 36);
             this.FiftiesNUD.TabIndex = 1;
             this.FiftiesNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.FiftiesNUD.ValueChanged += new System.EventHandler(this.FiftiesNUD_ValueChanged);
+            this.FiftiesNUD.ValueChanged += new System.EventHandler(this.CommonNudChanged);
             // 
             // OptionsMenu
             // 
-            this.OptionsMenu.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.OptionsMenu.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold);
             this.OptionsMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.OptionsMenu.ImeMode = System.Windows.Forms.ImeMode.On;
             this.OptionsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -606,81 +617,98 @@ namespace End_of_Day_Income
             this.OptionsMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.OptionsMenu.Location = new System.Drawing.Point(0, 0);
             this.OptionsMenu.Name = "OptionsMenu";
-            this.OptionsMenu.Size = new System.Drawing.Size(760, 45);
+            this.OptionsMenu.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+            this.OptionsMenu.Size = new System.Drawing.Size(688, 37);
             this.OptionsMenu.TabIndex = 55;
             this.OptionsMenu.Text = "&Options";
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.activityLogToolStripMenuItem,
+            this.openFilderToolStripMenuItem,
+            this.ReadToolStripMenuItem,
+            this.resetToolStripMenuItem,
             this.saveViewReportToolStripMenuItem,
-            this.speakToolStripMenuItem,
-            this.startOverToolStripMenuItem,
+            this.viewReportToolStripMenuItem,
             this.eToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(127, 41);
-            this.optionsToolStripMenuItem.Text = "&Options";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(67, 33);
+            this.optionsToolStripMenuItem.Text = "&File";
             // 
-            // activityLogToolStripMenuItem
+            // openFilderToolStripMenuItem
             // 
-            this.activityLogToolStripMenuItem.Name = "activityLogToolStripMenuItem";
-            this.activityLogToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+L";
-            this.activityLogToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.activityLogToolStripMenuItem.Size = new System.Drawing.Size(471, 46);
-            this.activityLogToolStripMenuItem.Text = "Activity &Log";
-            this.activityLogToolStripMenuItem.Click += new System.EventHandler(this.activityLogToolStripMenuItem_Click);
+            this.openFilderToolStripMenuItem.Name = "openFilderToolStripMenuItem";
+            this.openFilderToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.openFilderToolStripMenuItem.Size = new System.Drawing.Size(348, 34);
+            this.openFilderToolStripMenuItem.Text = "&Open Folder";
+            this.openFilderToolStripMenuItem.Click += new System.EventHandler(this.openFolderToolStripMenuItem_Click);
+            // 
+            // ReadToolStripMenuItem
+            // 
+            this.ReadToolStripMenuItem.Name = "ReadToolStripMenuItem";
+            this.ReadToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+D";
+            this.ReadToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.ReadToolStripMenuItem.Size = new System.Drawing.Size(348, 34);
+            this.ReadToolStripMenuItem.Text = "Re&ad";
+            this.ReadToolStripMenuItem.Click += new System.EventHandler(this.ReadToolStripMenuItem_Click);
+            // 
+            // resetToolStripMenuItem
+            // 
+            this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
+            this.resetToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.resetToolStripMenuItem.Size = new System.Drawing.Size(348, 34);
+            this.resetToolStripMenuItem.Text = "&Reset";
+            this.resetToolStripMenuItem.Click += new System.EventHandler(this.resetToolStripMenuItem_Click);
             // 
             // saveViewReportToolStripMenuItem
             // 
             this.saveViewReportToolStripMenuItem.Name = "saveViewReportToolStripMenuItem";
             this.saveViewReportToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+S";
             this.saveViewReportToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveViewReportToolStripMenuItem.Size = new System.Drawing.Size(471, 46);
-            this.saveViewReportToolStripMenuItem.Text = "&Save && View Report";
+            this.saveViewReportToolStripMenuItem.Size = new System.Drawing.Size(348, 34);
+            this.saveViewReportToolStripMenuItem.Text = "&Save";
             this.saveViewReportToolStripMenuItem.Click += new System.EventHandler(this.saveViewReportToolStripMenuItem_Click);
             // 
-            // speakToolStripMenuItem
+            // viewReportToolStripMenuItem
             // 
-            this.speakToolStripMenuItem.Name = "speakToolStripMenuItem";
-            this.speakToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+P";
-            this.speakToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.speakToolStripMenuItem.Size = new System.Drawing.Size(471, 46);
-            this.speakToolStripMenuItem.Text = "S&peak Inputs && Totals";
-            this.speakToolStripMenuItem.Click += new System.EventHandler(this.speakToolStripMenuItem_Click);
+            this.viewReportToolStripMenuItem.Name = "viewReportToolStripMenuItem";
+            this.viewReportToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.viewReportToolStripMenuItem.Size = new System.Drawing.Size(348, 34);
+            this.viewReportToolStripMenuItem.Text = "&View Report...";
+            this.viewReportToolStripMenuItem.Click += new System.EventHandler(this.viewReportToolStripMenuItem_Click);
             // 
             // eToolStripMenuItem
             // 
             this.eToolStripMenuItem.Name = "eToolStripMenuItem";
             this.eToolStripMenuItem.ShortcutKeyDisplayString = "Alt+F4";
             this.eToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.eToolStripMenuItem.Size = new System.Drawing.Size(471, 46);
+            this.eToolStripMenuItem.Size = new System.Drawing.Size(348, 34);
             this.eToolStripMenuItem.Text = "E&xit";
             this.eToolStripMenuItem.Click += new System.EventHandler(this.eToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(89, 41);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(79, 33);
             this.helpToolStripMenuItem.Text = "&Help";
-            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
-            // startOverToolStripMenuItem
+            // aboutToolStripMenuItem
             // 
-            this.startOverToolStripMenuItem.Name = "startOverToolStripMenuItem";
-            this.startOverToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+R";
-            this.startOverToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.startOverToolStripMenuItem.Size = new System.Drawing.Size(471, 46);
-            this.startOverToolStripMenuItem.Text = "Sta&rt Over";
-            this.startOverToolStripMenuItem.Click += new System.EventHandler(this.startOverToolStripMenuItem_Click);
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(273, 34);
+            this.aboutToolStripMenuItem.Text = "A&bout...";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(25F, 47F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(760, 522);
+            this.ClientSize = new System.Drawing.Size(688, 498);
             this.Controls.Add(this.OptionsMenu);
             this.Controls.Add(this.GrandTotalNUD);
             this.Controls.Add(this.DrawerStateTB);
@@ -719,15 +747,14 @@ namespace End_of_Day_Income
             this.Controls.Add(this.FivesLBL);
             this.Controls.Add(this.OnesLBL);
             this.Controls.Add(this.FiftiesLBL);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold);
             this.ForeColor = System.Drawing.SystemColors.Control;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(7);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BFY End of Day Drawer";
             ((System.ComponentModel.ISupportInitialize)(this.NickelsNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DimesNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.QuartersNUD)).EndInit();
@@ -748,55 +775,57 @@ namespace End_of_Day_Income
             this.ResumeLayout(false);
             this.PerformLayout();
 
-        }
+ }
 
-        #endregion
+ #endregion
 
-        private System.Windows.Forms.Label FiftiesLBL;
-        private System.Windows.Forms.Label OnesLBL;
-        private System.Windows.Forms.Label FivesLBL;
-        private System.Windows.Forms.Label TensLBL;
-        private System.Windows.Forms.Label TwentiesLBL;
-        private System.Windows.Forms.Label PenniesLBL;
-        private System.Windows.Forms.Label NickelsLBL;
-        private System.Windows.Forms.Label DimesLBL;
-        private System.Windows.Forms.Label QuartersLBL;
-        private System.Windows.Forms.Label RegisterLBL;
-        private System.Windows.Forms.NumericUpDown NickelsNUD;
-        private System.Windows.Forms.NumericUpDown DimesNUD;
-        private System.Windows.Forms.NumericUpDown QuartersNUD;
-        private System.Windows.Forms.NumericUpDown OnesNUD;
-        private System.Windows.Forms.NumericUpDown FivesNUD;
-        private System.Windows.Forms.NumericUpDown TensNUD;
-        private System.Windows.Forms.NumericUpDown TwentiesNUD;
-        private System.Windows.Forms.NumericUpDown PenniesNUD;
-        private System.Windows.Forms.NumericUpDown RegisterNUD;
-        private System.Windows.Forms.NumericUpDown DimeRollNUD;
-        private System.Windows.Forms.NumericUpDown NickelRollNUD;
-        private System.Windows.Forms.NumericUpDown QuarterRollNUD;
-        private System.Windows.Forms.Label DimeRollLBL;
-        private System.Windows.Forms.Label NickelRollLBL;
-        private System.Windows.Forms.Label QuarterRollLBL;
-        private System.Windows.Forms.NumericUpDown PennyRollNUD;
-        private System.Windows.Forms.Label PennyRollLBL;
-        private System.Windows.Forms.Label BillTotalLBL;
-        private System.Windows.Forms.Label RollsTotalLBL;
-        private System.Windows.Forms.Label CoinTotalLBL;
-        private System.Windows.Forms.Label GrandTotalLBL;
-        private System.Windows.Forms.TextBox BillsTotalTB;
-        private System.Windows.Forms.TextBox CoinsTotalTB;
-        private System.Windows.Forms.TextBox RollsTotalTB;
-        private System.Windows.Forms.TextBox DrawerStateTB;
-        private System.Windows.Forms.NumericUpDown GrandTotalNUD;
-        private System.Windows.Forms.NumericUpDown FiftiesNUD;
-        private System.Windows.Forms.MenuStrip OptionsMenu;
-        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem activityLogToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem speakToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveViewReportToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem eToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem startOverToolStripMenuItem;
+ private System.Windows.Forms.Label FiftiesLBL;
+ private System.Windows.Forms.Label OnesLBL;
+ private System.Windows.Forms.Label FivesLBL;
+ private System.Windows.Forms.Label TensLBL;
+ private System.Windows.Forms.Label TwentiesLBL;
+ private System.Windows.Forms.Label PenniesLBL;
+ private System.Windows.Forms.Label NickelsLBL;
+ private System.Windows.Forms.Label DimesLBL;
+ private System.Windows.Forms.Label QuartersLBL;
+ private System.Windows.Forms.Label RegisterLBL;
+ private System.Windows.Forms.NumericUpDown NickelsNUD;
+ private System.Windows.Forms.NumericUpDown DimesNUD;
+ private System.Windows.Forms.NumericUpDown QuartersNUD;
+ private System.Windows.Forms.NumericUpDown OnesNUD;
+ private System.Windows.Forms.NumericUpDown FivesNUD;
+ private System.Windows.Forms.NumericUpDown TensNUD;
+ private System.Windows.Forms.NumericUpDown TwentiesNUD;
+ private System.Windows.Forms.NumericUpDown PenniesNUD;
+ private System.Windows.Forms.NumericUpDown RegisterNUD;
+ private System.Windows.Forms.NumericUpDown DimeRollNUD;
+ private System.Windows.Forms.NumericUpDown NickelRollNUD;
+ private System.Windows.Forms.NumericUpDown QuarterRollNUD;
+ private System.Windows.Forms.Label DimeRollLBL;
+ private System.Windows.Forms.Label NickelRollLBL;
+ private System.Windows.Forms.Label QuarterRollLBL;
+ private System.Windows.Forms.NumericUpDown PennyRollNUD;
+ private System.Windows.Forms.Label PennyRollLBL;
+ private System.Windows.Forms.Label BillTotalLBL;
+ private System.Windows.Forms.Label RollsTotalLBL;
+ private System.Windows.Forms.Label CoinTotalLBL;
+ private System.Windows.Forms.Label GrandTotalLBL;
+ private System.Windows.Forms.TextBox BillsTotalTB;
+ private System.Windows.Forms.TextBox CoinsTotalTB;
+ private System.Windows.Forms.TextBox RollsTotalTB;
+ private System.Windows.Forms.TextBox DrawerStateTB;
+ private System.Windows.Forms.NumericUpDown GrandTotalNUD;
+ private System.Windows.Forms.NumericUpDown FiftiesNUD;
+ private System.Windows.Forms.MenuStrip OptionsMenu;
+ private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+ private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+ private System.Windows.Forms.ToolStripMenuItem saveViewReportToolStripMenuItem;
+ private System.Windows.Forms.ToolStripMenuItem eToolStripMenuItem;
+ private System.Windows.Forms.ToolStripMenuItem ReadToolStripMenuItem;
+        private ToolStripMenuItem openFilderToolStripMenuItem;
+        private ToolStripMenuItem resetToolStripMenuItem;
+        private ToolStripMenuItem viewReportToolStripMenuItem;
+        private ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
 
