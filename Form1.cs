@@ -5,6 +5,7 @@ using System.IO;
 using System.Media;
 using System.Speech.Synthesis;
 using System.Windows.Forms;
+using DailySafe;
 
 namespace End_of_Day_Income
 {
@@ -50,7 +51,8 @@ namespace End_of_Day_Income
 
         private void InitializeDirectories()
         {
-            BaseDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), CompanyName, "End of Day Drawer");
+            // Use the folder selected/persisted by BusinessNameManager instead of assuming OneDrive/MyDocuments
+            BaseDirectory = Path.Combine(BusinessNameManager.GetBusinessFolder(), CompanyName, DRAWER_FOLDER);
             ReportDirectory = Path.Combine(BaseDirectory, REPORT_FOLDER);
             TodayPath = Path.Combine(ReportDirectory, TODAY_FILE);
             FullPath = Path.Combine(ReportDirectory, FULL_LOG_FILE);

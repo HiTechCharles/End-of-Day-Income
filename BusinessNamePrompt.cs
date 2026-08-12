@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace End_of_Day_Income
+namespace DailySafe
 {
     public partial class BusinessNamePrompt : Form
     {
