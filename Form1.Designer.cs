@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BFY_ClassLibrary;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -25,7 +26,7 @@ namespace End_of_Day_Income
                     components.Dispose();
                 }
                 // Dispose custom resources
-                Form1.DrawerTalk?.Dispose();
+                TTS.DisposeSynth();
             }
             base.Dispose(disposing);
         }

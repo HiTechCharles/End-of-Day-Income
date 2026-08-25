@@ -1,11 +1,10 @@
-﻿using System;
+﻿using BFY_ClassLibrary;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Media;
-using System.Speech.Synthesis;
 using System.Windows.Forms;
-using DailySafe;
 
 namespace End_of_Day_Income
 {
@@ -18,16 +17,19 @@ namespace End_of_Day_Income
         private const string TODAY_FILE = "Today.txt";
         private const string FULL_LOG_FILE = "Full.txt";
 
+        //About box
+        private string About_Title = "End of Day Drawer";
+        private string About_CompanyText;
+        private string About_HelpText = "This program will help count a  cash drawer.  For each money category, enter the number of bills or coins, not their value.\r\n\r\nEach run of the program saves your selections to a file, which can be viewed by using the View Report menu option.\r\n\r\nThe program will also read the report aloud if you select the Read Report menu option.\r\n\r\nThe program will compare the total of your counted money to the amount in the POS system, and report whether the drawer is over, short, or balanced.";
         // Static directories
         public static string BaseDirectory;
         public static string ReportDirectory;
         public static string TodayPath;
         public static string FullPath;
-        public static string CompanyName;
+        public static new string CompanyName;
 
         // Public static fields
         public static string DSReport;
-        public static SpeechSynthesizer DrawerTalk = new SpeechSynthesizer();
         private static readonly Stopwatch AppTimer = new Stopwatch();
 
         // Multipliers in the same order as Program.DollarAmounts (13 items)
@@ -41,8 +43,10 @@ namespace End_of_Day_Income
         public Form1()
         {
             InitializeComponent();
-            CompanyName = BusinessNameManager.GetBusinessName();
-            this.Text = $"{CompanyName} - End of Day Drawer";            
+            CompanyName = BusinessMetadataManager.GetBusinessName();
+            this.Text = $"{CompanyName} - End of Day Drawer";
+            About_CompanyText = CompanyName + "\r\nEnd of Day Drawer\r\n\r\nV8.9, Developed using c# via Visual Studio 2026";
+            
             InitializeDirectories();
             InitializeSpeechSynthesizer();
             InitializeInputControls();
@@ -51,20 +55,17 @@ namespace End_of_Day_Income
 
         private void InitializeDirectories()
         {
-            // Use the folder selected/persisted by BusinessNameManager instead of assuming OneDrive/MyDocuments
-            BaseDirectory = Path.Combine(BusinessNameManager.GetBusinessFolder(), CompanyName, DRAWER_FOLDER);
+            BaseDirectory = Path.Combine(BusinessMetadataManager.GetBusinessFolder(), CompanyName, DRAWER_FOLDER);
             ReportDirectory = Path.Combine(BaseDirectory, REPORT_FOLDER);
             TodayPath = Path.Combine(ReportDirectory, TODAY_FILE);
             FullPath = Path.Combine(ReportDirectory, FULL_LOG_FILE);
 
-            Directory.CreateDirectory(BaseDirectory);
-            Directory.CreateDirectory(ReportDirectory);
+            FoldFiles.CreateStructure(BaseDirectory, createDatabase: false, createInput: false);
         }
 
         private void InitializeSpeechSynthesizer()
         {
-            DrawerTalk.Volume = 100;
-            DrawerTalk.Rate = 3;
+            TTS.InitializeSpeech();
         }
 
         private void InitializeInputControls()
@@ -153,13 +154,12 @@ namespace End_of_Day_Income
 
         private void SaveToFile()
         {
-            Directory.CreateDirectory(ReportDirectory);
-
             var lines = BuildReportLines();
 
             try
             {
                 File.WriteAllLines(TodayPath, lines);
+                File.AppendAllLines(FullPath, lines);
             }
             catch (Exception ex)
             {
@@ -173,8 +173,8 @@ namespace End_of_Day_Income
             var lines = new List<string>
             {
                 $"{CompanyName} - End of Day Drawer Report",
-                DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToShortTimeString() + "\n"
-                    };
+                $"{Dates.Long()} {Dates.Time()}\n",
+            };
 
             // Label mapping in same order as controls / multipliers
             var labels = new string[] {
@@ -202,9 +202,9 @@ namespace End_of_Day_Income
             lines.Add($"    Count Time:  {ts.Hours} Hours, {ts.Minutes} Minutes, {ts.Seconds} Seconds");
             lines.Add($"     POS Total:  {RegisterNUD.Value:C2}");
             lines.Add($" Drawer Status:  {DSReport}");
-            lines.Add(new string('-', 50));
             lines.Add(string.Empty);
-
+            lines.Add(new string('-', 30));
+            lines.Add(string.Empty);
             return lines;
         }
 
@@ -233,15 +233,8 @@ namespace End_of_Day_Income
         private void openFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Open base directory in file explorer
-            if (Directory.Exists(BaseDirectory))
-            {
-                Process.Start("explorer.exe", BaseDirectory);
-            }
-            else
-            {
-                MessageBox.Show("The directory does not exist.", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            FoldFiles.OpenInExplorer(BaseDirectory);
+
         }
 
         private void resetToolStripMenuItem_Click(object sender, EventArgs e)
@@ -269,12 +262,12 @@ namespace End_of_Day_Income
                 if (File.Exists(TodayPath))
                 {
                     string message = File.ReadAllText(TodayPath);
-                    DrawerTalk.SpeakAsync(message);
+                    TTS.Speak(message);
                 }
             }
             else
             {
-                DrawerTalk.SpeakAsync("The drawer total is zero dollars. Please enter amounts before reading the report.");
+                TTS.Speak("The drawer total is zero dollars. Please enter amounts before reading the report.");
                 SystemSounds.Exclamation.Play();
             }
         }
@@ -282,16 +275,21 @@ namespace End_of_Day_Income
         private void viewReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UpdateValues();
-            ViewList ViewListForm = new ViewList();
-            ViewListForm.ShowDialog();  
+            if (File.Exists(FullPath))
+            {
+                ViewReport VR = new ViewReport(FullPath, null);
+                VR.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No report file found. Please save a report first.", "Report Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (AboutForm aboutForm = new AboutForm())
-            {
-                aboutForm.ShowDialog();
-            }
+            AboutForm AF = new AboutForm(About_Title, About_CompanyText, About_HelpText);
+            AF.ShowDialog();
         }
 
         #endregion
