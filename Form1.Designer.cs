@@ -77,7 +77,7 @@ namespace End_of_Day_Income
             this.DrawerStateTB = new System.Windows.Forms.TextBox();
             this.GrandTotalNUD = new System.Windows.Forms.NumericUpDown();
             this.FiftiesNUD = new System.Windows.Forms.NumericUpDown();
-            this.OptionsMenu = new System.Windows.Forms.MenuStrip();
+            this.MainMenuMST = new System.Windows.Forms.MenuStrip();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFilderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ReadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,7 +102,7 @@ namespace End_of_Day_Income
             ((System.ComponentModel.ISupportInitialize)(this.PennyRollNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrandTotalNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FiftiesNUD)).BeginInit();
-            this.OptionsMenu.SuspendLayout();
+            this.MainMenuMST.SuspendLayout();
             this.SuspendLayout();
             // 
             // FiftiesLBL
@@ -607,21 +607,21 @@ namespace End_of_Day_Income
             this.FiftiesNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.FiftiesNUD.ValueChanged += new System.EventHandler(this.CommonNudChanged);
             // 
-            // OptionsMenu
+            // MainMenuMST
             // 
-            this.OptionsMenu.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold);
-            this.OptionsMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.OptionsMenu.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.OptionsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MainMenuMST.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold);
+            this.MainMenuMST.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.MainMenuMST.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.MainMenuMST.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.optionsToolStripMenuItem,
             this.helpToolStripMenuItem});
-            this.OptionsMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.OptionsMenu.Location = new System.Drawing.Point(0, 0);
-            this.OptionsMenu.Name = "OptionsMenu";
-            this.OptionsMenu.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.OptionsMenu.Size = new System.Drawing.Size(688, 37);
-            this.OptionsMenu.TabIndex = 55;
-            this.OptionsMenu.Text = "&Options";
+            this.MainMenuMST.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.MainMenuMST.Location = new System.Drawing.Point(0, 0);
+            this.MainMenuMST.Name = "MainMenuMST";
+            this.MainMenuMST.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+            this.MainMenuMST.Size = new System.Drawing.Size(688, 37);
+            this.MainMenuMST.TabIndex = 55;
+            this.MainMenuMST.Text = "&Options";
             // 
             // optionsToolStripMenuItem
             // 
@@ -710,7 +710,7 @@ namespace End_of_Day_Income
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(688, 498);
-            this.Controls.Add(this.OptionsMenu);
+            this.Controls.Add(this.MainMenuMST);
             this.Controls.Add(this.GrandTotalNUD);
             this.Controls.Add(this.DrawerStateTB);
             this.Controls.Add(this.RollsTotalTB);
@@ -771,8 +771,8 @@ namespace End_of_Day_Income
             ((System.ComponentModel.ISupportInitialize)(this.PennyRollNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrandTotalNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FiftiesNUD)).EndInit();
-            this.OptionsMenu.ResumeLayout(false);
-            this.OptionsMenu.PerformLayout();
+            this.MainMenuMST.ResumeLayout(false);
+            this.MainMenuMST.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -817,7 +817,7 @@ namespace End_of_Day_Income
  private System.Windows.Forms.TextBox DrawerStateTB;
  private System.Windows.Forms.NumericUpDown GrandTotalNUD;
  private System.Windows.Forms.NumericUpDown FiftiesNUD;
- private System.Windows.Forms.MenuStrip OptionsMenu;
+ private System.Windows.Forms.MenuStrip MainMenuMST;
  private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
  private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
  private System.Windows.Forms.ToolStripMenuItem saveViewReportToolStripMenuItem;

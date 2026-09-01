@@ -43,6 +43,9 @@ namespace End_of_Day_Income
         public Form1()
         {
             InitializeComponent();
+            this.Font = GlobalFontService.Instance.CurrentFont;
+            this.MainMenuMST.Font = GlobalFontService.Instance.CurrentFont;
+
             CompanyName = BusinessMetadataManager.GetBusinessName();
             this.Text = $"{CompanyName} - End of Day Drawer";
             About_CompanyText = CompanyName + "\r\nEnd of Day Drawer\r\n\r\nV8.9, Developed using c# via Visual Studio 2026";
@@ -163,8 +166,7 @@ namespace End_of_Day_Income
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unable to write log file: {ex.Message}", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DisplayMessage.ShowError($"Unable to write log file: {ex.Message}", "Error");
             }
         }
 
@@ -282,7 +284,7 @@ namespace End_of_Day_Income
             }
             else
             {
-                MessageBox.Show("No report file found. Please save a report first.", "Report Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DisplayMessage.ShowInfo("No report file found. Please save a report first.", "Report Not Found");
             }
         }
 
