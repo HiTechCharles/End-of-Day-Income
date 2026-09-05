@@ -169,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="End of Day Income.ico" />
+    <None Include="README.md" />
     <None Include="Resources\bfy logo.jpg" />
   </ItemGroup>
   <ItemGroup>
